@@ -301,7 +301,7 @@ form:after {
     -ms-box-shadow: 0 0 2px #ee04bb inset;
     -o-box-shadow: 0 0 2px #ee04bb inset;
     box-shadow: 0 0 2px #ee04bb inset;
-    background-color: #fff;
+    background-color: rgb(231, 10, 132);
     border: 1px solid #ee04bb;
     outline: none;
 }
@@ -312,6 +312,7 @@ form:after {
 
 #password {
     background-position: 10px -53px !important;
+    color: black
 }
 
 #content form input[type="submit"] {
