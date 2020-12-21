@@ -1,15 +1,13 @@
+ import Home from "./Home.js";
 class App extends React.Component {
   constructor() {
-    super();
-  
-    
+    super(); 
   }
-  switch(option) {
-    this.setState({ isHidden: option });
-  }
+ 
   render() {
     return (
       <div>
+ <Home/>
       </div>
     );
   }
