@@ -287,7 +287,7 @@ form:after {
     transition: all 0.5s ease;
     background: #eae7e7 url(https://cssdeck.com/uploads/media/items/8/8bcLQqF.png) no-repeat;
     border: 1px solid #c8c8c8;
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     font: 13px Helvetica, Arial, sans-serif;
     margin: 0 0 10px;
     padding: 15px 10px 15px 40px;
@@ -312,7 +312,7 @@ form:after {
 
 #password {
     background-position: 10px -53px !important;
-    color: black
+    color: black;
 }
 
 #content form input[type="submit"] {
@@ -364,7 +364,7 @@ form:after {
     background: -webkit-linear-gradient( top, rgba(247, 249, 250, 1) 0%, rgba(240, 240, 240, 1) 100%);
     background: -o-linear-gradient( top, rgba(247, 249, 250, 1) 0%, rgba(240, 240, 240, 1) 100%);
     background: -ms-linear-gradient( top, rgba(247, 249, 250, 1) 0%, rgba(240, 240, 240, 1) 100%);
-    background: linear-gradient( top, rgba(247, 249, 250, 1) 0%, rgba(240, 240, 240, 1) 100%);
+    background: linear-gradient( top, rgb(12, 12, 12) 0%, rgba(240, 240, 240, 1) 100%);
     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#f7f9fa', endColorstr='#f0f0f0', GradientType=0);
     -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
     -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
