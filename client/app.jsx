@@ -1,4 +1,5 @@
  import Home from "./Home.js";
+ import User from "./User.js";
 
 class App extends React.Component {
   constructor() {

@@ -1,3 +1,5 @@
+import User from "./User.js";
+
 class Home extends React.Component {
   constructor() {
     super();

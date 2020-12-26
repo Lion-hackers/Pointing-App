@@ -69,12 +69,28 @@ td {
     background: transparent;
 }
 
-img {
-    justify-content: center;
-    align-items: center;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+input[type="submit"] {
+    background-color: #c5057c;
+    border: none;
+    color: #fff;
+    padding: 15px 30px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+input[type="submit"] {
+    margin-top: 78px;
+    margin-left: 732px;
+}
+
+input.check {
+    margin-left: 659px;
+}
+
+h1.checkbox {
+    margin-left: 723px;
+    margin-top: -27px;
 }
 
 img {
