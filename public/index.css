@@ -70,6 +70,14 @@ td {
 }
 
 img {
+    justify-content: center;
+    align-items: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+img {
     margin-left: 412px;
     margin-top: -100px;
 }

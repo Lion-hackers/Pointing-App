@@ -2,21 +2,7 @@ class User extends React.Component {
     constructor() {
       super();
     }
-    onSubmit=(e)=>{
-      e.preventDefault();
-      let arr =[];
-      for ( var key in this.state){
-        if(this.state[key]=== true){
-          arr.push(key);
-        }
-      }
-      let data ={
-        check :arr.toString()
-      };
-      axios.post("localhost:27017/pointingapp" ,data)
-      .then(res=> console.log(res.data));
-    }
-    
+   
     render() {
       return (
         <div>

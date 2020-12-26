@@ -1,13 +1,13 @@
  import Home from "./Home.js";
+
 class App extends React.Component {
   constructor() {
     super(); 
   }
- 
   render() {
     return (
       <div>
- <Home/>
+ <User/>
       </div>
     );
   }
