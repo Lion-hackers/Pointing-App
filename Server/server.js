@@ -9,7 +9,8 @@ const PORT = 4000;
 let User = require('./users.model');
 
 // Middlwares
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(express.json())
 app.use(cors());
 app.use('/users', userRoutes);
 
@@ -21,38 +22,18 @@ connection.once('open', function(){
     console.log('MongoDB database connection established successfully');
 })
 
-// userRoutes.route('/').get(function(req, res) {
-    
-//     User.find(function(err, users){
-//         if(err){
-//             console.log(err)
-//         }else{
-//             res.json(users)
-//         }
-//     })
-// })
 
-// userRoutes.route('/:id').get(function(req, res){
-//     let id = req.params.id;
-//     User.findById(id, function(err, user){
-//         if(err){
-//             console.log(err)
-//         }else{
-//             res.json(user)
-//         }
-//     })
-// })
+userRoutes.get('/:id', (req, res) => {
+    User.findById(req.params.id, function(err, user){
+        if(err){
+            console.log(err)
+        }else{
+            res.json(user)
+        }
+    })
+})
 
-// userRoutes.route('/add').post(function(req, res){
-//     let user = new User(req.body);
-//     user.save()
-//         .then((user) => {
-//             res.status(200).json(user);
-//         })
-//         .catch((err) =>{
-//             res.status(400).send(err)
-//         })
-// })
+
 
 // @route  GET api/users
 // @description Get all users
@@ -65,14 +46,49 @@ userRoutes.get('/', (req, res) => {
 // @description Create a user
 userRoutes.post('/add', (req, res) => {
     const newUser = new User(req.body)
-     newUser.save().then(user => res.json(user))
+     newUser.save().then(user => res.json(user));
 })
+
+userRoutes.post('/login', async (req, res) => {
+    await User.findOne(req.body, (err, data) => {
+      if(data) {
+          res.send(data)
+      } else {
+          res.send('Not FOUND')
+      }
+    })
+})
+
+// @route Post api/users/:findById
+// @description Update a user
+userRoutes.post('/update/:id', (req, res) => {
+    User.findById(req.params.id, (err, user) => {
+        if (!user){
+            res.status(404).send("data is not found");
+        }
+        else{
+            user.userId = req.body.userId;
+            user.userFirstName = req.body.userFirstName;
+            user.userLastName = req.body.userLastName;
+            user.userPassword = req.body.userPassword;
+            user.userRole = req.body.userRole;
+            user.save().then(user => {
+                res.json(user);
+            })
+        }           
+    })
+    .catch(err => {
+        res.status(400).send("Update not possible");
+    });
+});
 
 // @route  DELETE api/users/:id
 // @description Delete a user
-userRoutes.delete('/:id', (req, res) => {
-    User.findById(req.params.id).then(user => user.remove().then(user => res.json({deleted: true})))
-    .catch(err => res.status(404).json({deleted: false}));
+userRoutes.delete('/delete/:id',async (req, res) => {
+    await User.deleteOne({_id:req.params.id})
+    res.send('deleted')
+    // User.findById(req.params.id).then(user => user.remove().then(user => res.json({deleted: true})))
+    // .catch(err => res.status(404).json({deleted: false}));
 })
 
 app.listen(PORT, function(){

@@ -21,6 +21,14 @@ class UsersList extends React.Component {
             .catch((error) => console.log(error))
     }
 
+    componentDidUpdate() {
+        axios.get('http://localhost:4000/users')
+            .then((response) => {
+                this.setState({ users: response.data})
+            })
+            .catch((error) => console.log(error))
+    }
+
     userOnList = () => {
         return (
             this.state.users.map((user, index) => {
@@ -40,6 +48,7 @@ class UsersList extends React.Component {
                             <th>Last Name</th>
                             <th>Password</th>
                             <th>Role</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>

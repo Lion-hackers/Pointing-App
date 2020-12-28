@@ -60,6 +60,7 @@ class CreateUser extends React.Component {
             userPassword: '',
             userRole: ''
         })
+        this.props.history.push('/admin/users')
     }
 
 
