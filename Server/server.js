@@ -18,20 +18,21 @@ app.use('/users', userRoutes);
 mongoose.connect('mongodb://localhost:27017/users', {useNewUrlParser: true, useUnifiedTopology: true});
 const connection = mongoose.connection;
 
+
 connection.once('open', function(){
     console.log('MongoDB database connection established successfully');
 })
 
 
-userRoutes.get('/:id', (req, res) => {
-    User.findById(req.params.id, function(err, user){
-        if(err){
-            console.log(err)
-        }else{
-            res.json(user)
-        }
-    })
-})
+// userRoutes.get('/:id', (req, res) => {
+//     User.findById(req.params.id, function(err, user){
+//         if(err){
+//             console.log(err)
+//         }else{
+//             res.json(user)
+//         }
+//     })
+// })
 
 
 
@@ -49,6 +50,8 @@ userRoutes.post('/add', (req, res) => {
      newUser.save().then(user => res.json(user));
 })
 
+// @route  POST api/login
+// @description login a user/admin
 userRoutes.post('/login', async (req, res) => {
     await User.findOne(req.body, (err, data) => {
       if(data) {
@@ -87,8 +90,6 @@ userRoutes.post('/update/:id', (req, res) => {
 userRoutes.delete('/delete/:id',async (req, res) => {
     await User.deleteOne({_id:req.params.id})
     res.send('deleted')
-    // User.findById(req.params.id).then(user => user.remove().then(user => res.json({deleted: true})))
-    // .catch(err => res.status(404).json({deleted: false}));
 })
 
 app.listen(PORT, function(){

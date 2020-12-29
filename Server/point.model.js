@@ -2,27 +2,19 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // Create Schema 
-let User = new Schema({
+let Point = new Schema({
     userId: {
         type: Number,
         required: true
     },
-    userFirstName: {
+    userStatus: {
         type: String,
         required: true
     },
-    userLastName: {
-        type: String,
-        required: true
-    },
-    userPassword: {
-        type: String,
-        required: true
-    },
-    userRole: {
+    userStatusTime: {
         type: String,
         required: true
     }
 })
 
-module.exports = mongoose.model('User', User);
+module.exports = mongoose.model('Point', Point);
